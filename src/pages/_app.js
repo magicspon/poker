@@ -1,7 +1,13 @@
+import * as T from "prop-types"
 import "@/styles/index.css"
 
-function MyApp({ Component, pageProps }) {
+function AppRoot({ Component, pageProps }) {
 	return <Component {...pageProps} />
 }
 
-export default MyApp
+AppRoot.propTypes = {
+	Component: T.node.isRequired,
+	pageProps: T.objectOf(T.any),
+}
+
+export default AppRoot

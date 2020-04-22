@@ -3,18 +3,19 @@ module.exports = {
 		"**/*.{js,jsx,ts,tsx}",
 		"!**/*.d.ts",
 		"!**/node_modules/**",
-		"!*.config.js",
+		"src/**/*.js",
 	],
 	setupFilesAfterEnv: ["<rootDir>/scripts/setup-tests.js"],
 	testPathIgnorePatterns: [
 		"/node_modules/",
 		"/.next/",
+		"/.storybook/",
 		"/scripts/",
 		"/styles/",
 	],
 	transform: {
 		"^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-		"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+		"^.+\\.css$": "<rootDir>/scripts/cssTransform.js",
 	},
 	transformIgnorePatterns: [
 		"/node_modules/",
