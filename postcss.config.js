@@ -1,8 +1,12 @@
+// For reasons unknown, storybook doesn't work when using the string format
+// and nextjs doesn't work using the function format.
+// STORYBOOK_ENV is set in the script
+
+const isStorybook = process.env.STORYBOOK_ENV === "storybook"
+
 module.exports = {
 	plugins: [
-		require("postcss-import"),
-		require("postcss-nested"),
-		require("tailwindcss")("./tailwind.config.js"),
+		isStorybook ? require("tailwindcss") : "tailwindcss",
 		process.env.NODE_ENV === "production" && [
 			[
 				"@fullhuman/postcss-purgecss",
@@ -15,6 +19,6 @@ module.exports = {
 				},
 			],
 		],
-		require(`postcss-preset-env`),
+		isStorybook ? require(`postcss-preset-env`) : "postcss-preset-env",
 	].filter(Boolean),
 }

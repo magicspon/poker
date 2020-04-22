@@ -1,14 +1,14 @@
 const path = require("path")
 
 module.exports = {
-	stories: ["../components/**/*.stories.js"],
+	stories: ["../src/**/*.stories.js"],
 
 	addons: ["@storybook/addon-actions", "@storybook/addon-links"],
 
 	webpackFinal: async (config) => {
 		const { rules } = config.module
 
-		config.resolve.alias["@"] = path.resolve(__dirname, "..")
+		config.resolve.alias["@"] = path.resolve(__dirname, "../src")
 
 		config.module.rules = rules
 			.filter((f) => f.test.toString() !== "/\\.css$/")
