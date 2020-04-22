@@ -1,4 +1,4 @@
-# Next with Storybook, Tailwindcss, CSS Modules and SVG components
+# Poker App
 
 ## Getting started
 

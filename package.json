@@ -8,9 +8,11 @@
 		"url": "https://spon.io"
 	},
 	"dependencies": {
+		"@xstate/react": "^0.8.1",
 		"next": "^9.2.0",
 		"react": "^16.12.0",
-		"react-dom": "^16.12.0"
+		"react-dom": "^16.12.0",
+		"xstate": "^4.9.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.9.0",
