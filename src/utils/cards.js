@@ -161,6 +161,7 @@ const hand = [
  *
  */
 const testFlush = R.compose(
+	// flatten and map (flatMap)
 	R.chain(([, v]) => v),
 	R.toPairs,
 	R.filter((v) => v.length === 5),
@@ -195,6 +196,9 @@ const testStraight = (list) => {
 	// then  reduce over the list, getting the
 	// diff for each item
 	R.compose(
+		// we're only using reduce here so we have
+		// access to the curr/prev value
+		// we aren't interested in the returned value
 		R.reduce((acc, { score }) => {
 			const d = Math.abs(acc - score)
 			// if the gap is one,
@@ -208,7 +212,11 @@ const testStraight = (list) => {
 
 			return score
 		}, 0),
+		// sort the list by score
 		R.sortBy((v) => v.score),
+		// remove duplicate values
+		// we're looking for sequences
+		// duplicates will only confuse things
 		R.uniqBy((v) => v.score)
 	)(list)
 
@@ -220,6 +228,7 @@ const testStraight = (list) => {
 
 const testMatchingCards = (list) => {
 	const matches = R.compose(
+		// map/filter the items
 		R.reduce((acc, [key, value]) => {
 			if (value < 2) return acc
 			return [
@@ -231,8 +240,12 @@ const testMatchingCards = (list) => {
 				},
 			]
 		}, []),
+		// convert the object to key/value pairs
 		R.toPairs,
+		// go over each group and return the length
+		// we'll get an array of objects back, {key: length}
 		R.map((r) => r.length),
+		// group the cards by key, we're looking for matches
 		R.groupBy((v) => v.key)
 	)(list)
 
