@@ -1,61 +1,82 @@
 import * as R from "ramda"
+// import * as SETS from "./cards/sets"
 
-export const SUITS = ["SPADES", "CLUBS", "DIAMONDS", "HEARTS"]
+const TWO = {
+	name: "TWO",
+	score: 2,
+}
+const THREE = {
+	name: "THREE",
+	score: 3,
+}
+const FOUR = {
+	name: "FOUR",
+	score: 4,
+}
+const FIVE = {
+	name: "FIVE",
+	score: 5,
+}
+const SIX = {
+	name: "SIX",
+	score: 6,
+}
+const SEVEN = {
+	name: "SEVEN",
+	score: 7,
+}
+const EIGHT = {
+	name: "EIGHT",
+	score: 8,
+}
+const NINE = {
+	name: "NINE",
+	score: 9,
+}
+const TEN = {
+	name: "TEN",
+	score: 10,
+}
+const JACK = {
+	name: "JACK",
+	score: 11,
+}
+const QUEEN = {
+	name: "QUEEN",
+	score: 12,
+}
+const KING = {
+	name: "KING",
+	score: 13,
+}
+const ACE = {
+	name: "ACE",
+	score: 14,
+}
 
-export const SETS = [
-	{
-		name: "TWO",
-		score: 2,
-	},
-	{
-		name: "THREE",
-		score: 3,
-	},
-	{
-		name: "FOUR",
-		score: 4,
-	},
-	{
-		name: "FIVE",
-		score: 5,
-	},
-	{
-		name: "SIX",
-		score: 6,
-	},
-	{
-		name: "SEVEN",
-		score: 7,
-	},
-	{
-		name: "EIGHT",
-		score: 8,
-	},
-	{
-		name: "NINE",
-		score: 9,
-	},
-	{
-		name: "TEN",
-		score: 10,
-	},
-	{
-		name: "JACK",
-		score: 11,
-	},
-	{
-		name: "QUEEN",
-		score: 12,
-	},
-	{
-		name: "KING",
-		score: 13,
-	},
-	{
-		name: "ACE",
-		score: 14,
-	},
-]
+const SETS = {
+	TWO,
+	THREE,
+	FOUR,
+	FIVE,
+	SIX,
+	SEVEN,
+	EIGHT,
+	NINE,
+	TEN,
+	JACK,
+	QUEEN,
+	KING,
+	ACE,
+}
+
+const MATCHING_HANDS = {
+	"2": "PAIR",
+	"3": "THREE OF A KIND",
+	"4": "FOUR OF A KIND",
+}
+
+const SUITS = ["SPADES", "CLUBS", "DIAMONDS", "HEARTS"]
 
 export const DECK = R.compose(
 	R.flatten,
@@ -67,7 +88,7 @@ export const DECK = R.compose(
 				key: set.name,
 				score: set.score,
 			}),
-			SETS
+			R.values(SETS)
 		)
 	)
 )(SUITS)
@@ -125,22 +146,28 @@ const hand = [
 	},
 	{
 		suit: "CLUBS",
-		key: "JACK",
+		key: "KING",
 		score: 11,
 	},
 	{
 		suit: "CLUBS",
-		key: "TEN",
+		key: "Ace",
 		score: 10,
 	},
 ]
 
-export const testFlush = R.compose(
+/**
+ * @function testFlush
+ *
+ */
+const testFlush = R.compose(
 	R.chain(([, v]) => v),
 	R.toPairs,
 	R.filter((v) => v.length === 5),
 	R.groupBy((item) => item.suit)
 )
+
+// const getScoreFromHand = R.reduce((acc, curr) => acc + curr.score, {})
 
 // this function should
 /**
@@ -149,9 +176,9 @@ export const testFlush = R.compose(
  * @return {Boolean}
  * @example
  * We need to test for a royal flush first
- * R.compose(is5CardMaxScore, testFlush)(hand) // ?
+ * R.compose(testHighestCards, testFlush)(hand) // ?
  */
-export const is5CardMaxScore = (list) => {
+const testHighestCards = (list) => {
 	// the minimum score for a royal flush is 60
 	const totalScore = R.reduce((acc, { score }) => acc + score, 0, list) // ?
 	if (totalScore < 60) return false
@@ -161,6 +188,7 @@ export const is5CardMaxScore = (list) => {
 
 const testStraight = (list) => {
 	let count = 0 // once this reaches 5 we have a match
+	let totalScore = 0
 
 	// first remove any duplicate values
 	// then arrange the cards by score
@@ -171,14 +199,49 @@ const testStraight = (list) => {
 			const d = Math.abs(acc - score)
 			// if the gap is one,
 			// increment the count
-			count = d === 1 ? count + 1 : 0
+			if (d === 1) {
+				count += 1
+				totalScore += score
+			} else {
+				count = 0
+			}
+
 			return score
 		}, 0),
 		R.sortBy((v) => v.score),
 		R.uniqBy((v) => v.score)
 	)(list)
 
-	return count >= 4
+	return {
+		pass: count >= 4,
+		score: totalScore,
+	}
 }
 
-testStraight(hand) // ?
+const testMatchingCards = (list) => {
+	const matches = R.compose(
+		R.reduce((acc, [key, value]) => {
+			if (value < 2) return acc
+			return [
+				...acc,
+				{
+					hand: MATCHING_HANDS[value],
+					score: SETS[key].score * value,
+					key,
+				},
+			]
+		}, []),
+		R.toPairs,
+		R.map((r) => r.length),
+		R.groupBy((v) => v.key)
+	)(list)
+
+	return matches
+}
+
+// testMatchingCards(hand) // ?
+// const isRoyalFlush = R.compose(testHighestCards, testFlush)
+// const isFlush = R.compose(testFlush)
+// const isFlush = testFlush
+
+// isFlush(hand) // ?
