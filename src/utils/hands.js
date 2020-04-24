@@ -39,7 +39,11 @@ export const testHighestCards = (list) => {
 }
 
 export const testStraight = (list) => {
-	let count = 0 // once this reaches 5 we have a match
+	// start the counter as 1
+	// the first delta is always
+	// going to be 0
+	// once this reaches 5 we have a match
+	let count = 1
 	let totalScore = 0
 
 	// first remove any duplicate values
@@ -50,6 +54,9 @@ export const testStraight = (list) => {
 		// we're only using reduce here so we have
 		// access to the curr/prev value
 		// we aren't interested in the returned value
+		// outside of this function
+		// we're doing some good ole variable
+		// assignments... bite me
 		R.reduce((acc, { score }) => {
 			const d = Math.abs(acc - score)
 			// if the gap is one,
@@ -72,7 +79,7 @@ export const testStraight = (list) => {
 	)(list)
 
 	return {
-		pass: count >= 4,
+		pass: count >= 5,
 		score: totalScore,
 	}
 }

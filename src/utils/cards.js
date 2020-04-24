@@ -76,7 +76,7 @@ export const DECK = R.compose(
 	R.map((suit) =>
 		R.map(
 			(set) => ({
-				// card: `${set.name} OF ${suit}`,
+				card: `${set.name} OF ${suit}`,
 				suit,
 				key: set.name,
 				score: set.score,
