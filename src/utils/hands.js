@@ -28,11 +28,11 @@ export const testFlush = R.compose(
  * @return {Boolean}
  * @example
  * We need to test for a royal flush first
- * R.compose(testHighestCards, testFlush)(hand) // ?
+ * R.compose(testHighestCards, testFlush)(hand)
  */
 export const testHighestCards = (list) => {
 	// the minimum score for a royal flush is 60
-	const totalScore = R.reduce((acc, { score }) => acc + score, 0, list) // ?
+	const totalScore = R.reduce((acc, { score }) => acc + score, 0, list)
 	if (totalScore < 60) return false
 
 	return true
@@ -65,7 +65,7 @@ export const testStraight = (list) => {
 				count += 1
 				totalScore += score
 			} else {
-				count = 0
+				count = 1
 			}
 
 			return score
@@ -110,9 +110,9 @@ export const testMatchingCards = (list) => {
 	return matches
 }
 
-// testMatchingCards(hand) // ?
+// testMatchingCards(hand)
 // const isRoyalFlush = R.compose(testHighestCards, testFlush)
 // const isFlush = R.compose(testFlush)
 // const isFlush = testFlush
 
-// isFlush(hand) // ?
+// isFlush(hand)

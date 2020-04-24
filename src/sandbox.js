@@ -1,17 +1,18 @@
 import * as R from "ramda"
-import * as cards from "./utils/cards"
-import { shuffle } from "./utils/shuffle"
+// import * as cards from "./utils/cards"
+// import { shuffle } from "./utils/shuffle"
+import * as HANDS from "./utils/stubs/hands.stubs"
+import * as TEST from "./utils/hands"
 
-const deck = shuffle(Math.random, cards.DECK)
+// const deck = shuffle(Math.random, cards.DECK)
 
 // const hand = R.take(7, deck)
 
-const hand = [
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-	{ card: "EIGHT OF HEARTS", suit: "HEARTS", key: "EIGHT", score: 8 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "TEN OF SPADES", suit: "SPADES", key: "TEN", score: 10 },
-	{ card: "KING OF CLUBS", suit: "CLUBS", key: "KING", score: 13 },
-	{ card: "QUEEN OF HEARTS", suit: "HEARTS", key: "QUEEN", score: 12 },
-	{ card: "TEN OF DIAMONDS", suit: "DIAMONDS", key: "TEN", score: 10 },
-]
+const rf = R.compose(TEST.testHighestCards, TEST.testFlush)(HANDS.royalFlush) // ?
+const sf = R.compose(TEST.testStraight, TEST.testFlush)(HANDS.straighFlush) // ?
+const fk = TEST.testMatchingCards(HANDS.fourOfAKind)
+const fh = TEST.testMatchingCards(HANDS.fullHouse) // ?
+const st = TEST.testStraight(HANDS.straight) // ?
+const tk = TEST.testMatchingCards(HANDS.threeOfAKind) // ?
+const tp = TEST.testMatchingCards(HANDS.twoPair) // ?
+const op = TEST.testMatchingCards(HANDS.onePair) // ?

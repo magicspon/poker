@@ -62,7 +62,7 @@ export const twoPair = [
 	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
 	{ card: "TEN OF DIAMONGS", suit: "DIAMONGS", key: "TEN", score: 10 },
 	{ card: "FIVE OF CLUBS", suit: "CLUBS", key: "FIVE", score: 5 },
-	{ card: "FIVE OF SPADES", suit: "SPADES", key: "TEN", score: 5 },
+	{ card: "FIVE OF SPADES", suit: "SPADES", key: "FIVE", score: 5 },
 	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
 	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
 	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
