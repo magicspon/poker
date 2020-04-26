@@ -101,7 +101,7 @@ export const onePair = [
 export const highCard = [
 	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
 	{ card: "ACE OF DIAMONGS", suit: "DIAMONGS", key: "ACE", score: 14 },
-	{ card: "FIVE OF CLUBS", suit: "CLUBS", key: "TEN", score: 5 },
+	{ card: "FIVE OF CLUBS", suit: "CLUBS", key: "FIVE", score: 5 },
 	{ card: "TWO OF SPADES", suit: "SPADES", key: "TWO", score: 2 },
 	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
 	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },

@@ -1,9 +1,9 @@
 import * as R from "ramda"
 import { SETS } from "./cards"
 
-export const HIGH_CARD = { name: "HIGH_CARD", value: 1 }
+export const HIGH_CARD = { name: "HIGH CARD", value: 1 }
 export const PAIR = { name: "PAIR", value: 2 }
-export const TWO_PAIR = { name: "TWO_PAIR", value: 3 }
+export const TWO_PAIR = { name: "TWO PAIR", value: 3 }
 export const THREE_OF_A_KIND = { name: "THREE OF A KIND", value: 4 }
 export const STRAIGHT = { name: "STRAIGHT", value: 5 }
 export const FLUSH = { name: "FLUSH", value: 6 }
@@ -173,8 +173,6 @@ export const testMatchingCards = (list) => {
 	return false
 }
 
-const a = true
-
 export const getHand = (hand) => {
 	const flush = testFlush(hand)
 	const royalFlush = R.compose(testHighestCards, testFlush)
@@ -215,7 +213,7 @@ export const getHand = (hand) => {
 	// pairs, two pairs, three of a kind, four of a kind
 	if (matches) {
 		return {
-			hand: matches,
+			...matches,
 			type: "matches",
 			highCard,
 			lowCard,
