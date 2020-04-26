@@ -71,9 +71,14 @@ export const SETS = {
 
 const SUITS = ["SPADES", "CLUBS", "DIAMONDS", "HEARTS"]
 
+// we create a deck by loop over each suit
+// for each suit we when convert the sets object
+// into an array of values, loop over them
+// and combine the suit with the set
+// use chain to flatMap
 export const DECK = R.compose(
-	R.flatten,
-	R.map((suit) =>
+	// R.flatten,
+	R.chain((suit) =>
 		R.map(
 			(set) => ({
 				card: `${set.name} OF ${suit}`,
