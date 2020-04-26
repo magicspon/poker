@@ -1,109 +1,19 @@
-export const royalFlush = [
-	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-	{ card: "QUEEN OF HEARTS", suit: "HEARTS", key: "QUEEN", score: 12 },
-	{ card: "KING OF HEARTS", suit: "HEARTS", key: "KING", score: 13 },
-	{ card: "ACE OF HEARTS", suit: "HEARTS", key: "ACE", score: 14 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "NINE OF DIAMONDS", suit: "DIAMONDS", key: "NINE", score: 9 },
-]
+export const royalFlush = ["10H", "JH", "QH", "KH", "AH", "3D", "7C"]
 
-export const straighFlush = [
-	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
-	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-	{ card: "QUEEN OF HEARTS", suit: "HEARTS", key: "QUEEN", score: 12 },
-	{ card: "KING OF HEARTS", suit: "HEARTS", key: "KING", score: 13 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "TEN OF DIAMONDS", suit: "DIAMONDS", key: "TEN", score: 10 },
-]
+export const straighFlush = ["9H", "10H", "JH", "QH", "KH", "3D", "7C"]
 
-export const fourOfAKind = [
-	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
-	{ card: "TEN OF DIAMONGS", suit: "DIAMONGS", key: "TEN", score: 10 },
-	{ card: "TEN OF CLUBS", suit: "CLUBS", key: "TEN", score: 10 },
-	{ card: "TEN OF SPADES", suit: "SPADES", key: "TEN", score: 10 },
-	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-]
+export const fourOfAKind = ["9H", "9S", "9D", "9C", "2H", "3D", "7C"]
 
-export const flush = [
-	{ card: "TWO OF HEARTS", suit: "HEARTS", key: "TWO", score: 2 },
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-	{ card: "QUEEN OF HEARTS", suit: "HEARTS", key: "QUEEN", score: 12 },
-	{ card: "KING OF HEARTS", suit: "HEARTS", key: "KING", score: 13 },
-	{ card: "ACE OF HEARTS", suit: "HEARTS", key: "ACE", score: 14 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "NINE OF DIAMONDS", suit: "DIAMONDS", key: "NINE", score: 9 },
-]
+export const flush = ["10H", "5H", "9H", "4H", "2H", "3D", "7C"]
 
-export const fullHouse = [
-	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
-	{ card: "TEN OF DIAMONGS", suit: "DIAMONGS", key: "TEN", score: 10 },
-	{ card: "TEN OF CLUBS", suit: "CLUBS", key: "TEN", score: 10 },
-	{ card: "NINE OF SPADES", suit: "SPADES", key: "NINE", score: 9 },
-	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-]
+export const fullHouse = ["10H", "10D", "10C", "6D", "6C", "3D", "7C"]
 
-export const straight = [
-	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
-	{ card: "TEN OF SPADES", suit: "SPADES", key: "TEN", score: 10 },
-	{ card: "JACK OF CLUBS", suit: "CLUBS", key: "JACK", score: 11 },
-	{ card: "QUEEN OF HEARTS", suit: "HEARTS", key: "QUEEN", score: 12 },
-	{ card: "KING OF CLUBS", suit: "CLUBS", key: "KING", score: 13 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "TWO OF DIAMONDS", suit: "DIAMONDS", key: "TWO", score: 2 },
-]
+export const straight = ["9C", "10C", "JC", "QH", "KS", "3D", "7C"]
 
-export const threeOfAKind = [
-	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
-	{ card: "TEN OF DIAMONGS", suit: "DIAMONGS", key: "TEN", score: 10 },
-	{ card: "TEN OF CLUBS", suit: "CLUBS", key: "TEN", score: 10 },
-	{ card: "FIVE OF SPADES", suit: "SPADES", key: "FIVE", score: 5 },
-	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-]
+export const threeOfAKind = ["10H", "10D", "10C", "7D", "6C", "3D", "2C"]
 
-export const twoPair = [
-	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
-	{ card: "TEN OF DIAMONGS", suit: "DIAMONGS", key: "TEN", score: 10 },
-	{ card: "FIVE OF CLUBS", suit: "CLUBS", key: "FIVE", score: 5 },
-	{ card: "FIVE OF SPADES", suit: "SPADES", key: "FIVE", score: 5 },
-	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-]
+export const twoPair = ["10H", "10D", "5C", "6D", "6C", "3D", "7C"]
 
-export const twoPair2 = [
-	{ card: "TWO OF HEARTS", suit: "HEARTS", key: "two", score: 2 },
-	{ card: "TWO OF DIAMONGS", suit: "DIAMONGS", key: "two", score: 2 },
-	{ card: "FIVE OF CLUBS", suit: "CLUBS", key: "FIVE", score: 5 },
-	{ card: "FIVE OF SPADES", suit: "SPADES", key: "FIVE", score: 5 },
-	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-]
+export const onePair = ["10H", "10D", "5C", "6D", "9S", "3D", "7C"]
 
-export const onePair = [
-	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
-	{ card: "TEN OF DIAMONGS", suit: "DIAMONGS", key: "TEN", score: 10 },
-	{ card: "FIVE OF CLUBS", suit: "CLUBS", key: "FIVE", score: 5 },
-	{ card: "TWO OF SPADES", suit: "SPADES", key: "TWO", score: 2 },
-	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-]
-
-export const highCard = [
-	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
-	{ card: "ACE OF DIAMONGS", suit: "DIAMONGS", key: "ACE", score: 14 },
-	{ card: "FIVE OF CLUBS", suit: "CLUBS", key: "FIVE", score: 5 },
-	{ card: "TWO OF SPADES", suit: "SPADES", key: "TWO", score: 2 },
-	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
-	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
-	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
-]
+export const highCard = ["AS", "10D", "5C", "6D", "9S", "3D", "7C"]

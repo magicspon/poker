@@ -1,16 +1,18 @@
 import * as R from "ramda"
-import { SETS } from "./cards"
+import { SETS, DECK } from "./cards"
 
-export const HIGH_CARD = { name: "HIGH CARD", value: 1 }
-export const PAIR = { name: "PAIR", value: 2 }
-export const TWO_PAIR = { name: "TWO PAIR", value: 3 }
-export const THREE_OF_A_KIND = { name: "THREE OF A KIND", value: 4 }
-export const STRAIGHT = { name: "STRAIGHT", value: 5 }
-export const FLUSH = { name: "FLUSH", value: 6 }
-export const FULL_HOUSE = { name: "FULL HOUSE", value: 7 }
-export const FOUR_OF_A_KIND = { name: "FOUR OF A KIND", value: 8 }
-export const STRAIGHT_FLUSH = { name: "STRAIGHT FLUSH", value: 9 }
-export const ROYAL_FLUSH = { name: "ROYAL FLUSH", value: 10 }
+const HIGH_CARD = { name: "HIGH CARD", value: 1 }
+const PAIR = { name: "PAIR", value: 2 }
+const TWO_PAIR = { name: "TWO PAIR", value: 3 }
+const THREE_OF_A_KIND = { name: "THREE OF A KIND", value: 4 }
+const STRAIGHT = { name: "STRAIGHT", value: 5 }
+const FLUSH = { name: "FLUSH", value: 6 }
+const FULL_HOUSE = { name: "FULL HOUSE", value: 7 }
+const FOUR_OF_A_KIND = { name: "FOUR OF A KIND", value: 8 }
+const STRAIGHT_FLUSH = { name: "STRAIGHT FLUSH", value: 9 }
+const ROYAL_FLUSH = { name: "ROYAL FLUSH", value: 10 }
+
+const mapHandToDeck = R.map((card) => DECK[card])
 
 const MATCHING_HANDS = {
 	"2": PAIR.name,
@@ -22,7 +24,7 @@ const MATCHING_HANDS = {
  * @function testFlush
  *
  */
-export const testFlush = R.compose(
+const testFlush = R.compose(
 	// flatten and map (flatMap)
 	R.chain(([, v]) => v),
 	R.toPairs,
@@ -41,7 +43,7 @@ export const testFlush = R.compose(
  * We need to test for a royal flush first
  * R.compose(testHighestCards, testFlush)(hand)
  */
-export const testHighestCards = (list) => {
+const testHighestCards = (list) => {
 	// the minimum score for a royal flush is 60
 	const totalScore = R.compose(
 		R.reduce((acc, { score }) => acc + score, 0),
@@ -53,7 +55,7 @@ export const testHighestCards = (list) => {
 	return testHighestCards
 }
 
-export const testStraight = (list) => {
+const testStraight = (list) => {
 	// start the counter as 1
 	// the first delta is always
 	// going to be 0
@@ -104,7 +106,7 @@ export const testStraight = (list) => {
 	return false
 }
 
-export const testMatchingCards = (list) => {
+const testMatchingCards = (list) => {
 	const matches = R.compose(
 		// map/filter the items
 		R.reduce((acc, [key, value]) => {
@@ -173,15 +175,16 @@ export const testMatchingCards = (list) => {
 	return false
 }
 
-export const getHand = (hand) => {
+export const getHand = (input) => {
+	const hand = mapHandToDeck(input)
 	const flush = testFlush(hand)
 	const royalFlush = R.compose(testHighestCards, testFlush)
 	const straightFlush = R.compose(testStraight, testFlush)
 	const matches = testMatchingCards(hand)
 	const st = testStraight(hand)
-	const playingHand = R.take(2, hand)
-	const highCard = Math.max(playingHand[0].score, playingHand[1].score)
-	const lowCard = Math.min(playingHand[0].score, playingHand[1].score)
+	const [card1, card2] = R.take(2, hand)
+	const highCard = Math.max(card1.score, card2.score)
+	const lowCard = Math.min(card1.score, card2.score)
 
 	// royal flush
 	if (royalFlush(hand)) {
@@ -293,7 +296,9 @@ export const getWinningHand = (input) => {
 			R.groupBy((v) => v.highCard)
 		)(highHands)
 
-		return lowHands
+		if (lowHands.value.length === 1) {
+			return lowHands.value[0].player
+		}
 	}
 
 	const highHands = R.compose(
@@ -312,6 +317,8 @@ export const getWinningHand = (input) => {
 		getTopHands,
 		R.groupBy((v) => v.lowCard)
 	)(highHands.value)
+
+	console.log(lowHands)
 
 	if (lowHands.value.length === 1) {
 		return lowHands.value[0].player

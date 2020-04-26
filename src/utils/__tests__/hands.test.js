@@ -53,6 +53,54 @@ describe("game winning", () => {
 	})
 })
 
+describe("full house winners", () => {
+	const table = ["10C", "9S", "9H", "6C", "JH"]
+
+	const players = [
+		{
+			name: "b",
+			hand: ["6H", "6D", ...table],
+		},
+		{
+			name: "c",
+			hand: ["6S", "9D", ...table],
+		},
+		{
+			name: "a",
+			hand: ["10H", "10D", ...table],
+		},
+		{
+			name: "d",
+			hand: ["JS", "JD", ...table],
+		},
+	]
+
+	it("should find the best hand from a full house", () => {
+		expect(fns.getWinningHand(players)).toBe("d")
+		expect(fns.getWinningHand(R.take(2, players))).toBe("c")
+		expect(fns.getWinningHand(R.take(3, players))).toBe("a")
+	})
+})
+
+describe("four of a kind winners", () => {
+	const table = ["6S", "9S", "9H", "6C", "JH"]
+
+	const players = [
+		{
+			name: "b",
+			hand: ["6H", "6D", ...table],
+		},
+		{
+			name: "c",
+			hand: ["9S", "9D", ...table],
+		},
+	]
+
+	it("should find the best hand from a full house", () => {
+		expect(fns.getWinningHand(players)).toBe("c")
+	})
+})
+
 describe("hand matching", () => {
 	it("should match royal flush hands", () => {
 		expect(fns.getHand(stub.royalFlush)).toMatchObject({

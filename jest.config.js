@@ -9,8 +9,8 @@ module.exports = {
 		"/styles/",
 	],
 	transform: {
-		"^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-		// "^.+\\.css$": "<rootDir>/scripts/cssTransform.js",
+		"^.+\\.jsx?$": "<rootDir>/scripts/jest.preprocess.js",
+		"^.+\\.css$": "<rootDir>/scripts/cssTransform.js",
 	},
 	testMatch: [
 		// '<rootDir>/**/__tests__/**/*.[jt]s?(x)',

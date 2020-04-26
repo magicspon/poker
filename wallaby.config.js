@@ -6,6 +6,7 @@ module.exports = function (wallaby) {
 			{ pattern: ".env", instrument: false },
 			"jest.config.js",
 			"__tests__/**/*.js",
+			"scripts/*.js",
 			"src/**/*.js?(x)",
 			"!src/**/*.test.js?(x)",
 		],
