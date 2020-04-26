@@ -6,8 +6,8 @@ module.exports = function (wallaby) {
 			{ pattern: ".env", instrument: false },
 			"jest.config.js",
 			"__tests__/**/*.js",
-			"**/*.js?(x)",
-			"!**/*.test.js?(x)",
+			"src/**/*.js?(x)",
+			"!src/**/*.test.js?(x)",
 		],
 
 		filesWithNoCoverageCalculated: [
@@ -17,7 +17,7 @@ module.exports = function (wallaby) {
 			"__tests__/utils/*.js",
 		],
 
-		tests: ["**/*.test.js?(x)"],
+		tests: ["src/**/*.test.js?(x)"],
 
 		env: {
 			type: "node",
@@ -27,12 +27,12 @@ module.exports = function (wallaby) {
 		},
 
 		compilers: {
-			"**/*.js?(x)": wallaby.compilers.babel(),
+			"src/**/*.js?(x)": wallaby.compilers.babel(),
 		},
 
 		testFramework: "jest",
 
-		debug: false,
+		debug: true,
 
 		// eslint-disable-next-line no-shadow
 		setup() {

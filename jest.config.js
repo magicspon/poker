@@ -1,10 +1,5 @@
 module.exports = {
-	collectCoverageFrom: [
-		"**/*.{js,jsx,ts,tsx}",
-		"!**/*.d.ts",
-		"!**/node_modules/**",
-		"src/**/*.js",
-	],
+	collectCoverageFrom: ["!**/*.d.ts", "!**/node_modules/**", "src/**/*.js"],
 	setupFilesAfterEnv: ["<rootDir>/scripts/setup-tests.js"],
 	testPathIgnorePatterns: [
 		"/node_modules/",
@@ -15,13 +10,18 @@ module.exports = {
 	],
 	transform: {
 		"^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-		"^.+\\.css$": "<rootDir>/scripts/cssTransform.js",
+		// "^.+\\.css$": "<rootDir>/scripts/cssTransform.js",
 	},
+	testMatch: [
+		// '<rootDir>/**/__tests__/**/*.[jt]s?(x)',
+		"<rootDir>/src/**/*(*.)@(spec|test).[tj]s?(x)",
+	],
 	transformIgnorePatterns: [
 		"/node_modules/",
 		"^.+\\.module\\.(css|sass|scss)$",
 	],
 	moduleNameMapper: {
-		"^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+		"\\.css$": "<rootDir>/__tests__/__mocks__/style.js",
+		"\\.module\\.css$": "identity-obj-proxy",
 	},
 }
