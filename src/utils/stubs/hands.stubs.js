@@ -78,6 +78,16 @@ export const twoPair = [
 	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
 ]
 
+export const twoPair2 = [
+	{ card: "TWO OF HEARTS", suit: "HEARTS", key: "two", score: 2 },
+	{ card: "TWO OF DIAMONGS", suit: "DIAMONGS", key: "two", score: 2 },
+	{ card: "FIVE OF CLUBS", suit: "CLUBS", key: "FIVE", score: 5 },
+	{ card: "FIVE OF SPADES", suit: "SPADES", key: "FIVE", score: 5 },
+	{ card: "NINE OF HEARTS", suit: "HEARTS", key: "NINE", score: 9 },
+	{ card: "SIX OF CLUBS", suit: "CLUBS", key: "SIX", score: 6 },
+	{ card: "JACK OF HEARTS", suit: "HEARTS", key: "JACK", score: 11 },
+]
+
 export const onePair = [
 	{ card: "TEN OF HEARTS", suit: "HEARTS", key: "TEN", score: 10 },
 	{ card: "TEN OF DIAMONGS", suit: "DIAMONGS", key: "TEN", score: 10 },
